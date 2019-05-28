@@ -20,19 +20,22 @@ Once this project is stable, Voila! We have a fresh deployment system for an Apa
 * JAVA_HOME set
 
 ## Installation
-* Build OODT
-  $ mvn clean package **[ARGS]**
 
-* Deploy OODT
-  $ tar zxf distribution/target/${PROJECT_ARTIFACT_ID}-distribution-*-bin.tar.gz -C /my/deployment/directory/oodt
+### Build OODT
+```bash
+mvn clean package ${ARGS}
+```
+### Deploy OODT
+```bash
+tar zxf distribution/target/${PROJECT_ARTIFACT_ID}-distribution-*-bin.tar.gz -C ${OODT_DEPLOYMENT_DIRECTORY}
+```
 
-* Run OODT
-  $ cd /my/deployment/directory/oodt
-  $ cd bin
-  $ ./oodt start
+### Run OODT
+```bash
+cd ${OODT_DEPLOYMENT_DIRECTORY}/bin
+./oodt start
+```
 
-
----
 NOTE: For other build configurations, add the following arguments:
 (default)           : bin, crawler, data, extensions,
                       filemgr (Lucene), logs, pcs, resmgr,
