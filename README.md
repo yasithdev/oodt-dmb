@@ -27,7 +27,7 @@ mvn clean package ${ARGS}
 ```
 ### Deploy OODT
 ```bash
-tar zxf distribution/target/${PROJECT_ARTIFACT_ID}-distribution-*-bin.tar.gz -C ${OODT_DEPLOYMENT_DIRECTORY}
+tar -xvf distribution/target/${PROJECT_ARTIFACT_ID}-distribution-*-bin.tar.gz -C ${OODT_DEPLOYMENT_DIRECTORY}
 ```
 
 ### Run OODT
