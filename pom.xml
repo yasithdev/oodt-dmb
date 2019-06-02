@@ -35,6 +35,7 @@
     <maven-jar-plugin.version>2.5</maven-jar-plugin.version>
     <maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
     <maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+    <dockerfile-maven-version>1.4.10</dockerfile-maven-version>
   </properties>
 
   <repositories>
@@ -107,7 +108,6 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven-javadoc-plugin.version}</version>
         <configuration>
-          <outputEncoding>UTF-8</outputEncoding>
           <charset>UTF-8</charset>
           <docencoding>UTF-8</docencoding>
           <encoding>UTF-8</encoding>

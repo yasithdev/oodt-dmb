@@ -37,3 +37,6 @@ buildNumber.properties
 # IntelliJ
 .idea/
 
+# MacOS
+.DS_Store
+
