@@ -77,7 +77,7 @@
                      <dockerfile>Dockerfile</dockerfile>
                      <tag>${project.version}</tag>
                      <buildArgs>
-                        <src_file>${project.build.finalName}-bin.tar.gz</src_file>
+                        <SRC_FILE>${project.build.finalName}-bin.tar.gz</SRC_FILE>
                      </buildArgs>
                   </configuration>
                </plugin>
