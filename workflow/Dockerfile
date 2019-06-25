@@ -17,4 +17,4 @@ RUN apk add tar && tar -xvf ${SRC_FILE} && rm ${SRC_FILE}
 # Start
 WORKDIR /oodt/workflow
 EXPOSE 9002
-ENTRYPOINT java -Djava.ext.dirs="./lib" -Djava.util.logging.config.file="./etc/logging.properties" -Dorg.apache.oodt.cas.workflow.properties="./etc/workflow.properties" -Djava.io.tmpdir="/tmp" -Dorg.apache.oodt.cas.pge.task.metkeys.legacyMode="true" -Dorg.apache.oodt.cas.pge.task.status.legacyMode="true" org.apache.oodt.cas.workflow.system.XmlRpcWorkflowManager --portNum 9002
+CMD java -Djava.ext.dirs="./lib" -Djava.util.logging.config.file="./etc/logging.properties" -Dorg.apache.oodt.cas.workflow.properties="./etc/workflow.properties" -Djava.io.tmpdir="/tmp" -Dorg.apache.oodt.cas.pge.task.metkeys.legacyMode="true" -Dorg.apache.oodt.cas.pge.task.status.legacyMode="true" org.apache.oodt.cas.workflow.system.XmlRpcWorkflowManager --portNum 9002
