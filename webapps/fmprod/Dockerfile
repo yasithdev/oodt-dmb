@@ -7,4 +7,4 @@ ENV FILEMGR_URL=localhost:9000
 
 # Extract Source
 ARG SRC_FILE
-COPY target/${SRC_FILE} ${CATALINA_HOME}/webapps
+ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/fmprod.war

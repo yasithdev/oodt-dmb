@@ -38,7 +38,7 @@
       <includes>
         <include>*.*</include>
       </includes>
-      <fileMode>660</fileMode>
+      <fileMode>664</fileMode>
       <directoryMode>775</directoryMode>
     </fileSet>    
     <fileSet>
@@ -55,7 +55,7 @@
       <includes>
         <include>**/**.*</include>
       </includes>
-      <fileMode>660</fileMode>
+      <fileMode>664</fileMode>
       <directoryMode>775</directoryMode>
     </fileSet>
   </fileSets>

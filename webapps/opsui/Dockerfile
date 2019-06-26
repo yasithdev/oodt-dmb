@@ -12,4 +12,4 @@ ENV GANGLIA_URL=.
 
 # Extract Source
 ARG SRC_FILE
-COPY target/${SRC_FILE} ${CATALINA_HOME}/webapps
+ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/opsui.war

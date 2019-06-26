@@ -3,7 +3,7 @@ MAINTAINER Yasith Jayawardana <yasith.jayawardana@icloud.com>
 
 # Extract Source
 WORKDIR /oodt
+# Using root user, as tar extraction was giving permission denied errors
+USER root
 ARG SRC_FILE
-COPY target/${SRC_FILE} .
-RUN apk add tar && tar -xvf ${SRC_FILE} && cp -al solr/* /var/solr/ && rm -rf solr/ && rm ${SRC_FILE}
-
+ADD target/${SRC_FILE} ${SOLR_HOME}

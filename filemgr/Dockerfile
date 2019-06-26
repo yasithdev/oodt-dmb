@@ -11,8 +11,7 @@ VOLUME /oodt/logs
 # Extract Source
 WORKDIR /oodt
 ARG SRC_FILE
-COPY target/${SRC_FILE} .
-RUN apk add tar && tar -xvf ${SRC_FILE} && rm ${SRC_FILE}
+ADD target/${SRC_FILE} .
 
 # Start
 WORKDIR /oodt/filemgr
