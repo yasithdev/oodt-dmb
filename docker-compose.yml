@@ -2,6 +2,41 @@ version: '3'
 services:
   filemgr:
     image: dmb-filemgr:1.0-SNAPSHOT
+    restart: always
     ports:
       - 9000:9000
     environment:
+      - OODT_HOME=/oodt
+      - FILEMGR_HOME=/oodt/filemgr
+  resmgr:
+    image: dmb-resmgr:1.0-SNAPSHOT
+    restart: always
+    ports:
+      - 9001:9001
+    environment:
+      - HOME=/oodt
+      - RESMGR_HOME=/oodt/resmgr
+  workflow:
+    image: dmb-workflow:1.0-SNAPSHOT
+    restart: always
+    ports:
+      - 9002:9002
+    environment:
+      - OODT=/oodt
+      - WORKFLOW_HOME=/oodt/workflow
+  solr:
+    image: dmb-solr:1.0-SNAPSHOT
+    restart: always
+    ports:
+      - 8983:8983
+#    environment:
+#      -
+  opsui:
+    image: dmb-opsui:1.0-SNAPSHOT
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - FILEMGR_URL=http://filemgr:9000
+      - RESMGR_URL=http://resmgr:9001
+      - WORKFLOW_URL=http://workflow:9002
