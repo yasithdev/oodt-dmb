@@ -13,4 +13,3 @@ ENV GANGLIA_URL=.
 # Extract Source
 ARG SRC_FILE
 ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/opsui.war
-RUN mkdir ${CATALINA_HOME}/logs
