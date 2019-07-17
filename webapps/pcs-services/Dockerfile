@@ -1,13 +1,19 @@
 FROM tomcat:8.0-slim
 MAINTAINER Yasith Jayawardana <yasith.jayawardana@icloud.com>
 
-# Environment Variables
-ENV FILEMGR_URL=localhost:9000
-ENV RESMGR_URL=localhost:9001
-ENV WORKFLOW_URL=localhost:9002
+# Environment Variables (should not be modified)
+ENV PCS_HOME="/oodt/pcs"
 
-ENV PCS_HOME=.
+# Environment Variables (should be user specified)
+ENV FILEMGR_URL=""
+ENV RESMGR_URL=""
+ENV WORKFLOW_URL=""
 
-# Extract Source
+# Steps to extract Source
 ARG SRC_FILE
 ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/pcs.war
+
+# Volumes (You can mount these directories from the host machine)
+# * /oodt/pcs/policy (PCS Policy Files)
+
+# Start

@@ -1,36 +1,64 @@
 version: '3'
+
 services:
+
+  crawler:
+    image: dmb-filemgr:1.0-SNAPSHOT
+    restart: always
+    environment:
+      - FAILURE_DIR=/tmp
+      - BACKUP_DIR=/tmp
+      - PUSHPULL_MET_FILE_EXT=met
+      - FILEMGR_URL=http://filemgr:9000
+      - WORKFLOW_URL=http://workflow:9002
+    volumes:
+      - dmb-crawler-policy:/oodt/crawler/policy
+      - dmb-logs:/oodt/crawler/logs
+      - dmb-data:/oodt/data
+      - dmb-temp:/tmp
+
   filemgr:
     image: dmb-filemgr:1.0-SNAPSHOT
     restart: always
     ports:
       - 9000:9000
     environment:
-      - OODT_HOME=/oodt
-      - FILEMGR_HOME=/oodt/filemgr
+      - SOLR_URL=http://solr:8983
+    volumes:
+      - dmb-filemgr-policy:/oodt/filemgr/policy
+      - dmb-logs:/oodt/filemgr/logs
+      - dmb-data:/oodt/data
+      - dmb-temp:/tmp
+
   resmgr:
     image: dmb-resmgr:1.0-SNAPSHOT
     restart: always
     ports:
       - 9001:9001
-    environment:
-      - HOME=/oodt
-      - RESMGR_HOME=/oodt/resmgr
+    volumes:
+      - dmb-resmgr-policy:/oodt/resmgr/policy
+      - dmb-data:/oodt/data
+      - dmb-logs:/oodt/resmgr/logs
+      - dmb-temp:/tmp
+
+  solr:
+    image: dmb-solr:1.0-SNAPSHOT
+    restart: always
+    ports:
+      - 8983:8983
+
   workflow:
     image: dmb-workflow:1.0-SNAPSHOT
     restart: always
     ports:
       - 9002:9002
     environment:
-      - OODT=/oodt
-      - WORKFLOW_HOME=/oodt/workflow
-  solr:
-    image: dmb-solr:1.0-SNAPSHOT
-    restart: always
-    ports:
-      - 8983:8983
-#    environment:
-#      -
+      - RESMGR_URL=http://resmgr:9001
+    volumes:
+      - dmb-workflow-policy:/oodt/workflow/policy
+      - dmb-logs:/oodt/workflow/logs
+      - dmb-temp:/tmp
+
   opsui:
     image: dmb-opsui:1.0-SNAPSHOT
     restart: always
@@ -40,3 +68,17 @@ services:
       - FILEMGR_URL=http://filemgr:9000
       - RESMGR_URL=http://resmgr:9001
       - WORKFLOW_URL=http://workflow:9002
+      - GANGLIA_URL=
+    volumes:
+      - dmb-workflow-policy:/oodt/workflow/policy
+      - dmb-pcs-policy:/oodt/pcs/policy
+
+volumes:
+  dmb-crawler-policy:
+  dmb-filemgr-policy:
+  dmb-resmgr-policy:
+  dmb-workflow-policy:
+  dmb-pcs-policy:
+  dmb-logs:
+  dmb-data:
+  dmb-temp:

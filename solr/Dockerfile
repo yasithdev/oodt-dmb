@@ -5,5 +5,6 @@ MAINTAINER Yasith Jayawardana <yasith.jayawardana@icloud.com>
 USER root
 ARG SRC_FILE
 ADD target/${SRC_FILE} ${SOLR_HOME}
+
 # Change back to solr user
 USER solr

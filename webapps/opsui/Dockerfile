@@ -1,15 +1,22 @@
 FROM tomcat:8.0-slim
 MAINTAINER Yasith Jayawardana <yasith.jayawardana@icloud.com>
 
-# Environment Variables
-ENV FILEMGR_URL=localhost:9000
-ENV RESMGR_URL=localhost:9001
-ENV WORKFLOW_URL=localhost:9002
+# Environment Variables (should not be modified)
+ENV WORKFLOW_HOME="/oodt/workflow"
+ENV PCS_HOME="/oodt/pcs"
 
-ENV WORKFLOW_HOME=.
-ENV PCS_HOME=.
-ENV GANGLIA_URL=.
+# Environment Variables (should be user specified)
+ENV FILEMGR_URL=""
+ENV RESMGR_URL=""
+ENV WORKFLOW_URL=""
+ENV GANGLIA_URL=""
 
-# Extract Source
+# Steps to Extract Source
 ARG SRC_FILE
 ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/opsui.war
+
+# Volumes (You can mount these directories from the host machine)
+# * /oodt/workflow/policy (Workflow Manager Policy Files)
+# * /oodt/pcs/policy (PCS Policy Files)
+
+# Start

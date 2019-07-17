@@ -1,10 +1,16 @@
 FROM tomcat:8.0-slim
 MAINTAINER Yasith Jayawardana <yasith.jayawardana@icloud.com>
 
-# Environment Variables
-ENV FMPROD_HOME=/oodt
-ENV FILEMGR_URL=localhost:9000
+# Environment Variables (should not be modified)
+ENV FMPROD_HOME="${CATALINA_HOME}/webapps/fmprod"
 
-# Extract Source
+# Environment Variables (should be user specified)
+ENV FILEMGR_URL=""
+
+# Steps to Extract Source
 ARG SRC_FILE
 ADD target/${SRC_FILE} ${CATALINA_HOME}/webapps/fmprod.war
+
+# Volumes (You can mount these directories from the host machine)
+
+# Start
